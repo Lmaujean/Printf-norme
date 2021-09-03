@@ -31,12 +31,12 @@ RM			= rm -f
 AR			= ar -rcs
 
 $(NAME):	libft ${OBJS}
-			${AR} ${NAME} ${OBJS}
+			${AR} ${NAME} ${OBJS} 
 
 all:		${NAME}
 
-%.o: %.c	$(HEADER_FILE)
-			$(CC) -c $(CFLAGS) -o $@ $<
+%.o: %.c	
+			$(CC) -c $(CFLAGS) -I $(HEADER_FILE) -o $@ $<
 
 clean:
 			${RM} ${OBJS}
@@ -48,8 +48,8 @@ fclean:		clean
 
 re:			fclean all
 
-libft:
-			${LIBFT} bonus
+libft:		
+			${LIBFT}
 			cp libft/libft.a $(NAME)
 
 .PHONY:		all clean fclean re libft

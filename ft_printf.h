@@ -18,26 +18,28 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "libft.h"
+# include "./Libft/libft.h"
 # include <limits.h>
 
 typedef struct s_printf_env
 {
-	size_t		read_size;
+	int		read_size;
 }				t_printf_env;
 
-void		print_address_hex(void *ptr);
+void		print_address_hex(void *ptr, t_printf_env *env);
 void		*init_env(void);
-void		process_u_conv(int nb);
-void		process_x_conv(int nb, char conv);
-void		ft_putnbr_unsigned(unsigned int n);
+void		process_u_conv(int nb, t_printf_env *env);
+void		process_x_conv(int nb, char conv, t_printf_env *env);
+void		ft_putnbr_unsigned(unsigned int n, t_printf_env *env);
 char		*ft_itoa_base(int value, int base);
 char		hex_digit(int v);
 int			validate_data(const char *str);
 int			get_size(long value, long base);
-int			process_conversion(const char *str, int index, va_list ap);
-void		process_printing(va_list ap, const char *str);
-void		ft_putchar_size(char c, t_printf_env *env);
+int			process_conversion(const char *str, int index, va_list ap, t_printf_env *env);
+void		process_printing(va_list ap, const char *str, t_printf_env *env);
+void		ft_putchar_size(char c, int fd, t_printf_env *env);
+void		ft_putstr_size(char *str, int fd, t_printf_env *env);
+void		ft_putnbr_size(int n, int fd, t_printf_env *env);
 int			ft_printf(const char *str, ...);
 
 #endif
